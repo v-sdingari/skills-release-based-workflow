@@ -8,7 +8,6 @@ const emptyState = document.getElementById("empty-state");
 const inputError = document.getElementById("input-error");
 
 let todos = loadTodos();
-let nextTodoId = getNextTodoId(todos);
 
 todoInput.maxLength = MAX_TODO_LENGTH;
 
@@ -70,7 +69,7 @@ function renderTodos() {
 
 function addTodo(text) {
   todos.push({
-    id: nextTodoId++,
+    id: getNextTodoId(todos),
     text,
     completed: false,
   });
@@ -97,10 +96,6 @@ todoForm.addEventListener("submit", (event) => {
   const value = todoInput.value.trim();
   if (!value) {
     inputError.textContent = "Please enter a task before adding.";
-    return;
-  }
-  if (value.length > MAX_TODO_LENGTH) {
-    inputError.textContent = `Tasks must be ${MAX_TODO_LENGTH} characters or fewer.`;
     return;
   }
 
