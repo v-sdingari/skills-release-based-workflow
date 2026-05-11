@@ -1,5 +1,6 @@
 const STORAGE_KEY = "todo-items";
 const MAX_TODO_LENGTH = 120;
+const STORAGE_ERROR_MESSAGE = "Unable to save tasks in this browser.";
 
 const todoForm = document.getElementById("todo-form");
 const todoInput = document.getElementById("todo-input");
@@ -26,8 +27,11 @@ function loadTodos() {
 function saveTodos() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+    if (inputError.textContent === STORAGE_ERROR_MESSAGE) {
+      inputError.textContent = "";
+    }
   } catch (error) {
-    inputError.textContent = "Unable to save tasks in this browser.";
+    inputError.textContent = STORAGE_ERROR_MESSAGE;
     console.warn("Unable to save to-dos to localStorage.", error);
   }
 }
