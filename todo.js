@@ -24,7 +24,12 @@ function loadTodos() {
 }
 
 function saveTodos() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+  } catch (error) {
+    inputError.textContent = "Unable to save tasks in this browser.";
+    console.warn("Unable to save to-dos to localStorage.", error);
+  }
 }
 
 function getNextTodoId(items) {
@@ -48,7 +53,7 @@ function renderTodos() {
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.checked = !!todo.completed;
+    checkbox.checked = todo.completed;
     checkbox.addEventListener("change", () => toggleTodo(todo.id));
 
     const text = document.createElement("span");
