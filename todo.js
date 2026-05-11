@@ -36,8 +36,8 @@ function saveTodos() {
   }
 }
 
-function getNextTodoId(items) {
-  const maxId = items.reduce(
+function getNextTodoId() {
+  const maxId = todos.reduce(
     (max, todo) => (typeof todo.id === "number" && todo.id > max ? todo.id : max),
     0
   );
@@ -79,7 +79,7 @@ function renderTodos() {
 
 function addTodo(text) {
   todos.push({
-    id: getNextTodoId(todos),
+    id: getNextTodoId(),
     text,
     completed: false,
   });
@@ -106,10 +106,12 @@ todoForm.addEventListener("submit", (event) => {
   const value = todoInput.value.trim();
   if (!value) {
     inputError.textContent = "Please enter a task before adding.";
+    todoInput.setAttribute("aria-invalid", "true");
     return;
   }
 
   inputError.textContent = "";
+  todoInput.setAttribute("aria-invalid", "false");
   addTodo(value);
   todoInput.value = "";
   todoInput.focus();
