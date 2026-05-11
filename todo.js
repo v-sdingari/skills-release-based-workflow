@@ -18,6 +18,7 @@ function loadTodos() {
     const parsed = JSON.parse(saved);
     return Array.isArray(parsed) ? parsed : [];
   } catch (error) {
+    console.warn("Unable to load saved to-dos from localStorage.", error);
     return [];
   }
 }
