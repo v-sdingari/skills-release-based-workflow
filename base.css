@@ -106,7 +106,10 @@ section {
   display: block;
 }
 body {
-  /* Add background-color declaration here */
+  background-color: #0f172a;
+  color: #e2e8f0;
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
 }
 ol,
 ul {
@@ -130,12 +133,121 @@ table {
 
 /* Center the container */
 #container {
-  padding-top: 50px;
   margin: 0 auto;
-  width: 480px;
+  max-width: 560px;
+  padding: 32px 16px;
 }
 
-/* Give canvas a background */
-canvas {
-  background-color: black;
+.todo-app {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+#todo-form {
+  display: flex;
+  gap: 8px;
+}
+
+#todo-input {
+  flex: 1;
+  background-color: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  color: #e2e8f0;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+#todo-input:focus {
+  border-color: #60a5fa;
+  outline: none;
+}
+
+button {
+  background-color: #2563eb;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 10px 14px;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+.message {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-top: 12px;
+}
+
+.message.error {
+  color: #fca5a5;
+  min-height: 20px;
+}
+
+#todo-list {
+  margin-top: 12px;
+}
+
+.todo-item {
+  align-items: center;
+  border-bottom: 1px solid #334155;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.todo-item:last-child {
+  border-bottom: 0;
+}
+
+.todo-label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  min-width: 0;
+}
+
+.todo-text {
+  overflow-wrap: anywhere;
+}
+
+.todo-item.completed .todo-text {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+  padding: 8px 10px;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
